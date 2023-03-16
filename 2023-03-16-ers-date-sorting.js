@@ -167,14 +167,15 @@ console.table(ersDate.sort(getCustomDateSortFunction(config1)));
 
 
 /* helper functions starts here */
+
 function printLine(word) {
     console.log(`\n---------------- ${word} ----------------`);
 }
+
+/* without using Date class */
 function getDateInStr(dateStr) {
     const parts = dateStr.split('-');
     const month = getM(parts[1]);
-    
-
     let day = parts[0];
     day = day.length === 1 ? `0${day}` : day;
     return `${parts[2]}-${month}-${day}`;
@@ -219,8 +220,11 @@ function getCustomDateSortFunction(sortConfig) {
             return 0;
         }
         const { key, order } = sortConfig[i];
-        const date1 = getDateInStr(emp1[key]);
-        const date2 = getDateInStr(emp2[key]);
+        /* you can sort using  getDateInStr function or using getTime function */
+        // const date1 = getDateInStr(emp1[key]);
+        // const date2 = getDateInStr(emp2[key]);
+        const date1 = new Date(emp1[key]).getTime();
+        const date2 = new Date(emp2[key]).getTime();
 
         if (order === 'ASC') {
             return sortPrimitiveAsc(date1, date2);
