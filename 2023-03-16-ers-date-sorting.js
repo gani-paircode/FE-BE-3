@@ -120,7 +120,7 @@ ers[3].joiningDate = '12-December-2021';
 ers[4].joiningDate = '16-December-2021';
 ers[5].joiningDate = '28-December-2021';
 ers[6].joiningDate = '7-March-2021';
-ers[7].joiningDate = '17-March-2023';
+ers[7].joiningDate = '31-December-2021';
 ers[8].joiningDate = '17-March-2021';
 ers[9].joiningDate = '27-December-2021';
 
@@ -131,7 +131,7 @@ ers[2].birthDate = '16-July-2002';
 ers[3].birthDate = '12-December-2003';
 ers[4].birthDate = '16-December-2003';
 ers[5].birthDate = '28-December-2001';
-ers[6].birthDate = '7-March-2001';
+ers[6].birthDate = '25-December-2001';
 ers[7].birthDate = '17-March-1990';
 ers[8].birthDate = '17-March-1998';
 ers[9].birthDate = '27-December-1999';
@@ -227,30 +227,20 @@ function getCustomDateSortFunction(sortConfig) {
         const date2 = new Date(emp2[key]).getTime();
 
         if (order === 'ASC') {
-            return sortPrimitiveAsc(date1, date2);
+            return sortPrimitive(date1, date2);
         }
-        return sortPrimitiveDesc(date1, date2);
+        return sortPrimitive(date2, date1);
     }
     return customSort;
 }
 
 
-function sortPrimitiveAsc(n1, n2) {
+function sortPrimitive(n1, n2) {
     let temp = 0;
     if (n1 > n2) {
         temp = 1;
     } else if (n1 < n2) {
         temp = -1;
-    }
-    return temp;
-}
-
-function sortPrimitiveDesc(n1, n2) {
-    let temp = 0;
-    if (n1 > n2) {
-        temp = -1;
-    } else if (n1 < n2) {
-        temp = 1;
     }
     return temp;
 }
