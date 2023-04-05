@@ -1,3 +1,4 @@
+/*Write sufficient test cases and test this solution */
 const winningPairs = [
  // row
  [0, 1, 2],
