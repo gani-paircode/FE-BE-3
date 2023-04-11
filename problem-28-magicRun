@@ -1,0 +1,30 @@
+function magicRun(...args) {
+    const [cbF, ms, n, ...rest] = args;
+    for(let i = 1; i <= n; i++) {
+        setTimeout(cbF, i*ms, ...rest);
+    }
+}
+
+console.log(`time before calling magicRun(printSum - ${getDateTime()}`);
+magicRun(printSum, 1000, 5, 50,50,150,150);
+
+function printSum(...numbers) {
+    let sum = 0;
+    numbers.forEach(num => {
+        sum = sum + num
+    });
+    console.log(`sum = ${sum}. calling at ${getDateTime()}`);
+}
+
+
+function getDateTime() {
+    const dt = new Date();
+    return `${dt.getHours()} : ${dt.getMinutes()} : ${dt.getSeconds()} : ${dt.getMilliseconds()}`;
+}
+
+
+console.log(`time before calling magicRun(sayHi - ${getDateTime()}`);
+magicRun(printSum, 10, 3);
+function sayHi() {
+    console.log(`Hi User !! - It's ${getDateTime()}`);
+}
